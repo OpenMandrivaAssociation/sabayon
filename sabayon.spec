@@ -2,7 +2,7 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.18.1
+Version: 2.19.1
 Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
@@ -26,7 +26,7 @@ BuildRequires: gtk+2-devel
 BuildRequires: gettext
 BuildRequires: desktop-file-utils
 BuildRequires: usermode
-BuildRequires: xorg-x11-Xnest
+BuildRequires: x11-server-xnest
 BuildRequires: perl-XML-Parser
 
 %description
@@ -41,7 +41,7 @@ Requires(pre):  rpm-helper
 Requires(pre): usermode-consoleonly
 Requires(post): gtk+2.0
 Requires(postun): gtk+2.0
-Requires: xorg-x11-Xnest
+Requires: x11-server-xnest
 Requires: pygtk2.0 >= %{pygtk2_version}
 Requires: gnome-python-gconf >= %{gnome_python2_version}
 
