@@ -2,7 +2,7 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.19.1
+Version: 2.19.2
 Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
@@ -53,7 +53,7 @@ sysadmin should use to manage Sabayon profiles.
 %setup -q
 %patch -p1
 %patch1 -p1 -b .source
-touch *
+#touch *
 bzip2 -9 ChangeLog
  
 %build
@@ -90,7 +90,8 @@ startup_notify="true" xdg="true"
 EOF
 
 # We don't want these
-rm -f %buildroot%py_platsitedir/%{name}/xlib.*a
+rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
+      %buildroot%_datadir/icons/hicolor/icon-theme.cache
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -144,7 +145,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/glade/%{name}.glade
 %{_datadir}/%{name}/glade/pessulus.glade
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/48x48/apps/%{name}.png
+%{_datadir}/icons/hicolor/*/apps/%{name}.*
 
 %dir %py_platsitedir/%{name}
 %py_platsitedir/%{name}/*.so
