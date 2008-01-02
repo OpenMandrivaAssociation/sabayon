@@ -14,6 +14,7 @@ Patch: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.12.1-source.patch
 
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Requires: python-gamin
 Requires: python-libxml2
