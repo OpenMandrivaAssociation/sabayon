@@ -77,17 +77,6 @@ desktop-file-install --vendor="" \
 
 %find_lang sabayon
 
-mkdir -p %buildroot/%_menudir
-cat > %buildroot/%_menudir/%name-admin << EOF
-?package(%name-admin): \
-command="%_bindir/sabayon" \
-needs="gnome" \
-icon="sabayon.png" \
-section="System/Configuration/GNOME" \
-title="User Profile Editor" \
-longtitle="Establish and Edit Profiles for Users" \
-startup_notify="true" xdg="true"
-EOF
 
 # We don't want these
 rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
@@ -150,6 +139,5 @@ rm -rf $RPM_BUILD_ROOT
 %dir %py_platsitedir/%{name}
 %py_platsitedir/%{name}/*.so
 %py_platsitedir/%{name}/*
-%_menudir/%name-admin
 
 
