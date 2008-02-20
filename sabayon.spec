@@ -3,7 +3,7 @@
 
 Name:    sabayon
 Version: 2.21.0
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
@@ -13,6 +13,8 @@ Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.b
 Patch: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.12.1-source.patch
+# gw: don't call gnomesu, we have consolehelper
+Patch2: sabayon-2.21.0-desktopentry.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -24,7 +26,6 @@ Requires: GConf2 > 2.14.0-1mdk
 BuildRequires: pygtk2.0-devel
 BuildRequires: gtk+2-devel
 BuildRequires: gettext
-BuildRequires: desktop-file-utils
 BuildRequires: usermode
 BuildRequires: x11-server-xnest
 BuildRequires: perl-XML-Parser
@@ -66,14 +67,6 @@ bzip2 -9 ChangeLog
 rm -rf $RPM_BUILD_ROOT
 
 %makeinstall PAM_PREFIX=$RPM_BUILD_ROOT%{_sysconfdir}
-
-desktop-file-install --vendor="" \
-  --dir $RPM_BUILD_ROOT%{_datadir}/applications \
-  --remove-category SystemSetup \
-  --remove-category Application \
-  --add-category "Settings;DesktopSettings" \
-  --add-category X-MandrivaLinux-System-Configuration-GNOME \
-  $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
 
 %find_lang sabayon
 
