@@ -3,7 +3,7 @@
 
 Name:    sabayon
 Version: 2.22.0
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
@@ -13,9 +13,9 @@ Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.b
 Patch: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.12.1-source.patch
-# gw: don't call gnomesu, we have consolehelper
-Patch2: sabayon-2.21.0-desktopentry.patch
-
+# gw: fix for running with libexecdir == libdir:
+# http://bugzilla.gnome.org/show_bug.cgi?id=522119
+Patch3: sabayon-2.22.0-libexecdir.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Requires: python-gamin
@@ -54,6 +54,7 @@ sysadmin should use to manage Sabayon profiles.
 %setup -q
 %patch -p1
 %patch1 -p1 -b .source
+%patch3 -p1
 #touch *
 bzip2 -9 ChangeLog
  
