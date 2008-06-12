@@ -83,13 +83,17 @@ rm -rf $RPM_BUILD_ROOT
 %_pre_useradd %name-admin /var/lib/ /sbin/nologin
 /usr/sbin/usermod -d "" %{name}-admin &>/dev/null || :
 
+%if %mdkversion < 200900
 %post admin
 %update_menus
 %update_icon_cache hicolor
+%endif
 
+%if %mdkversion < 200900
 %postun admin
 %clean_menus
 %clean_icon_cache hicolor
+%endif
 
 %files -f sabayon.lang
 %defattr(-, root, root, 755)
