@@ -2,12 +2,12 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.22.0
-Release: %mkrel 3
+Version: 2.22.1
+Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
-License: GPL
+License: GPLv2+
 URL:     http://www.gnome.org/projects/sabayon
 Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
 Patch: sabayon-2.12.3-pam.patch
@@ -28,7 +28,7 @@ BuildRequires: gtk+2-devel
 BuildRequires: gettext
 BuildRequires: usermode
 BuildRequires: x11-server-xnest
-BuildRequires: perl-XML-Parser
+BuildRequires: intltool
 
 %description
 Sabayon is a tool to help sysadmins and user change and maintain the
