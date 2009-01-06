@@ -10,12 +10,13 @@ Group:   System/Configuration/Other
 License: GPLv2+
 URL:     http://www.gnome.org/projects/sabayon
 Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
-Patch: sabayon-2.12.3-pam.patch
+Patch0: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.22.1-source.patch
 # gw: fix for running with libexecdir == libdir:
 # http://bugzilla.gnome.org/show_bug.cgi?id=522119
 Patch3: sabayon-2.22.0-libexecdir.patch
+Patch4: sabayon-2.22.1-fix-linkage.patch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Requires: python-gamin
@@ -52,16 +53,17 @@ sysadmin should use to manage Sabayon profiles.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
 %patch1 -p1 -b .source
 %patch3 -p1
+%patch4 -p0
 #touch *
 bzip2 -9 ChangeLog
  
 %build
 %configure2_5x 	\
-	--enable-consolehelper=yes		\
-	 --with-prototype-user=%{name}-admin
+	--enable-console-helper=yes \
+	--with-prototype-user=%{name}-admin
 %make
 
 %install
