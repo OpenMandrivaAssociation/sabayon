@@ -12,7 +12,7 @@ URL:     http://www.gnome.org/projects/sabayon
 Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
 Patch: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
-Patch1:  sabayon-2.12.1-source.patch
+Patch1:  sabayon-2.22.1-source.patch
 # gw: fix for running with libexecdir == libdir:
 # http://bugzilla.gnome.org/show_bug.cgi?id=522119
 Patch3: sabayon-2.22.0-libexecdir.patch
