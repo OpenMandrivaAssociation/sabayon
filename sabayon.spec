@@ -22,10 +22,12 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires: python-gamin
 Requires: python-libxml2
 Requires: python-ldap
+Requires: pyxdg
 Requires: GConf2 > 2.14.0-1mdk
 
 BuildRequires: pygtk2.0-devel
 BuildRequires: gtk+2-devel
+BuildRequires: pyxdg
 BuildRequires: gettext
 BuildRequires: usermode
 BuildRequires: x11-server-xnest
