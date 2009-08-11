@@ -30,7 +30,7 @@ BuildRequires: gtk+2-devel
 BuildRequires: pyxdg
 BuildRequires: gettext
 BuildRequires: usermode
-BuildRequires: x11-server-xnest
+BuildRequires: x11-server-xephyr
 BuildRequires: intltool
 
 %description
@@ -45,7 +45,7 @@ Requires(pre):  rpm-helper
 Requires(pre): usermode-consoleonly
 Requires(post): gtk+2.0
 Requires(postun): gtk+2.0
-Requires: x11-server-xnest
+Requires: x11-server-xephyr
 Requires: pygtk2.0 >= %{pygtk2_version}
 Requires: gnome-python-gconf >= %{gnome_python2_version}
 
