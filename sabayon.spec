@@ -3,7 +3,7 @@
 
 Name:    sabayon
 Version: 2.28.0
-Release: %mkrel 2
+Release: %mkrel 3
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
@@ -21,7 +21,6 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
 Requires: python-gamin
 Requires: python-libxml2
-Requires: python-ldap
 Requires: pyxdg
 Requires: GConf2 > 2.14.0-1mdk
 Requires: python-%name
@@ -61,6 +60,7 @@ Conflicts: %name < %version-%release
 Conflicts: %name-admin < %version-%release
 #Requires: pygtk2.0 >= %{pygtk2_version}
 #Requires: gnome-python-gconf >= %{gnome_python2_version}
+Requires: python-ldap
 
 %description -n python-%name
 This package contains the python modules of sabayon.
