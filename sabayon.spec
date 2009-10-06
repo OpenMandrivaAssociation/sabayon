@@ -3,7 +3,7 @@
 
 Name:    sabayon
 Version: 2.28.0
-Release: %mkrel 1
+Release: %mkrel 2
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
@@ -24,6 +24,7 @@ Requires: python-libxml2
 Requires: python-ldap
 Requires: pyxdg
 Requires: GConf2 > 2.14.0-1mdk
+Requires: python-%name
 
 BuildRequires: pygtk2.0-devel
 BuildRequires: gtk+2-devel
@@ -52,6 +53,17 @@ Requires: gnome-python-gconf >= %{gnome_python2_version}
 %description admin
 The sabayon-admin package contains the graphical tools which a
 sysadmin should use to manage Sabayon profiles.
+
+%package  -n python-%name
+Summary:  Python modules of sabayon
+Group:    System/Configuration/Other
+Conflicts: %name < %version-%release
+Conflicts: %name-admin < %version-%release
+#Requires: pygtk2.0 >= %{pygtk2_version}
+#Requires: gnome-python-gconf >= %{gnome_python2_version}
+
+%description -n python-%name
+This package contains the python modules of sabayon.
 
 %prep
 %setup -q
@@ -109,6 +121,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{_sbindir}/%{name}-apply
 
+%files -n python-%name
 %dir %py_platsitedir/%{name}/
 %py_platsitedir/%{name}/__init__.py*
 %py_platsitedir/%{name}/config.py*
@@ -120,6 +133,8 @@ rm -rf $RPM_BUILD_ROOT
 %py_platsitedir/%{name}/userprofile.py*
 %py_platsitedir/%{name}/util.py*
 %py_platsitedir/%{name}/sources/*.py*
+%py_platsitedir/%{name}/*.so
+%py_platsitedir/%{name}/*
 
 %files admin
 %doc doc/index.html doc/testing.html doc/helping.html doc/developing.html
@@ -136,9 +151,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}/glade/pessulus.glade
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
-
-%dir %py_platsitedir/%{name}
-%py_platsitedir/%{name}/*.so
-%py_platsitedir/%{name}/*
-
 
