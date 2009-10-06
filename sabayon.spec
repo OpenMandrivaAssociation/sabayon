@@ -60,7 +60,6 @@ sysadmin should use to manage Sabayon profiles.
 %patch3 -p1
 %patch4 -p0
 #touch *
-bzip2 -9 ChangeLog
  
 %build
 %configure2_5x 	\
@@ -102,7 +101,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -f sabayon.lang
 %defattr(-, root, root, 755)
 
-%doc AUTHORS ChangeLog.bz2 NEWS README TODO ISSUES
+%doc AUTHORS NEWS README TODO ISSUES
 
 %config(noreplace) %{_sysconfdir}/X11/xinit.d/%{name}*
 
