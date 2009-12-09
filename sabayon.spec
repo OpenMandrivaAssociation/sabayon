@@ -31,6 +31,7 @@ BuildRequires: gettext
 BuildRequires: usermode
 BuildRequires: x11-server-xephyr
 BuildRequires: intltool
+BuildRequires: gnome-doc-utils >= 0.17.3
 
 %description
 Sabayon is a tool to help sysadmins and user change and maintain the
