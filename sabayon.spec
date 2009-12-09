@@ -2,7 +2,7 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.28.1
+Version: 2.29.2
 Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
@@ -84,8 +84,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %makeinstall PAM_PREFIX=$RPM_BUILD_ROOT%{_sysconfdir}
 
-%find_lang sabayon
-
+%find_lang sabayon --with-gnome
 
 # We don't want these
 rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
@@ -129,16 +128,15 @@ rm -rf $RPM_BUILD_ROOT
 %py_platsitedir/%{name}/dirmonitor.py*
 %py_platsitedir/%{name}/mozilla_bookmarks.py*
 %py_platsitedir/%{name}/storage.py*
-%py_platsitedir/%{name}/userdb.py*
 %py_platsitedir/%{name}/userprofile.py*
 %py_platsitedir/%{name}/util.py*
 %py_platsitedir/%{name}/sources/*.py*
 %py_platsitedir/%{name}/*.so
 %py_platsitedir/%{name}/*
+%dir %_datadir/omf/%name/
+%_datadir/omf/%name/*-C.omf
 
 %files admin
-%doc doc/index.html doc/testing.html doc/helping.html doc/developing.html
-%doc doc/sabayon.css doc/*.jpg doc/*.gif
 
 %config(noreplace) %{_sysconfdir}/pam.d/%{name}
 %config(noreplace) %{_sysconfdir}/security/console.apps/%{name}
