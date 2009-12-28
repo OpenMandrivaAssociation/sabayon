@@ -1,15 +1,16 @@
 %define pygtk2_version 2.5.3
 %define gnome_python2_version 2.6.0
+%define prerel rc1
 
 Name:    sabayon
-Version: 2.29.2
-Release: %mkrel 1
+Version: 2.29.5
+Release: %mkrel -c %prerel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
 License: GPLv2+
 URL:     http://www.gnome.org/projects/sabayon
-Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
+Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}-%prerel.tar.bz2
 Patch0: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.22.1-source.patch
@@ -23,10 +24,12 @@ Requires: python-gamin
 Requires: pyxdg
 Requires: GConf2 > 2.14.0-1mdk
 Requires: python-%name
+Requires: pessulus
 
 BuildRequires: pygtk2.0-devel
 BuildRequires: gtk+2-devel
 BuildRequires: pyxdg
+BuildRequires: pessulus
 BuildRequires: gettext
 BuildRequires: usermode
 BuildRequires: x11-server-xephyr
@@ -67,12 +70,11 @@ Requires: python-libxml2
 This package contains the python modules of sabayon.
 
 %prep
-%setup -q
+%setup -q -n %name-%version-%prerel
 %patch0 -p1
 %patch1 -p1 -b .source
 %patch3 -p1
 %patch4 -p0
-#touch *
  
 %build
 %configure2_5x 	\
@@ -117,9 +119,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %config(noreplace) %{_sysconfdir}/X11/xinit.d/%{name}*
 
-%{_sysconfdir}/desktop-profiles
 
 %{_sbindir}/%{name}-apply
+%_mandir/man8/sabayon*8*
 
 %files -n python-%name
 %dir %py_platsitedir/%{name}/
@@ -146,8 +148,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_sbindir}/%{name}
 %{_libexecdir}/%{name}*
 
-%{_datadir}/%{name}/glade/%{name}.glade
-%{_datadir}/%{name}/glade/pessulus.glade
+%dir %_datadir/%name/ui
+%_datadir/%name/ui/%name.ui
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/apps/%{name}.*
 
