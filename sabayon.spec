@@ -1,6 +1,6 @@
 %define pygtk2_version 2.5.3
 %define gnome_python2_version 2.6.0
-%define prerel rc1
+%define prerel rc2
 
 Name:    sabayon
 Version: 2.29.5
@@ -88,6 +88,10 @@ rm -rf $RPM_BUILD_ROOT
 %makeinstall PAM_PREFIX=$RPM_BUILD_ROOT%{_sysconfdir}
 
 %find_lang sabayon --with-gnome
+for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
+echo "%lang($(basename $omf|sed -e s/.*-// -e s/.omf//)) $(echo $omf|sed -e s!%buildroot!!)" >> %name.lang
+done
+
 
 # We don't want these
 rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
