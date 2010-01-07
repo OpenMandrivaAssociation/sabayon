@@ -4,7 +4,7 @@
 
 Name:    sabayon
 Version: 2.29.5
-Release: %mkrel -c %prerel 1
+Release: %mkrel -c %prerel 2
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
@@ -97,6 +97,9 @@ done
 rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
       %buildroot%_datadir/icons/hicolor/icon-theme.cache
 
+# (tv) fix adding users:
+mkdir -p %buildroot/etc/sabayon/profiles/
+
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -128,6 +131,7 @@ rm -rf $RPM_BUILD_ROOT
 %_mandir/man8/sabayon*8*
 
 %files -n python-%name
+%dir /etc/sabayon/profiles/
 %dir %py_platsitedir/%{name}/
 %py_platsitedir/%{name}/__init__.py*
 %py_platsitedir/%{name}/config.py*
