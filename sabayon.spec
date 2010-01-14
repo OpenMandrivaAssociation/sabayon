@@ -1,16 +1,15 @@
 %define pygtk2_version 2.5.3
 %define gnome_python2_version 2.6.0
-%define prerel rc2
 
 Name:    sabayon
 Version: 2.29.5
-Release: %mkrel -c %prerel 2
+Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
 License: GPLv2+
 URL:     http://www.gnome.org/projects/sabayon
-Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}-%prerel.tar.bz2
+Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
 Patch0: sabayon-2.12.3-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.22.1-source.patch
@@ -70,7 +69,7 @@ Requires: python-libxml2
 This package contains the python modules of sabayon.
 
 %prep
-%setup -q -n %name-%version-%prerel
+%setup -q -n %name-%version
 %patch0 -p1
 %patch1 -p1 -b .source
 %patch3 -p1
