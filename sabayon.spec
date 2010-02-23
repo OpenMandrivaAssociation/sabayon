@@ -2,7 +2,7 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.29.5
+Version: 2.29.91
 Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
@@ -10,7 +10,7 @@ Group:   System/Configuration/Other
 License: GPLv2+
 URL:     http://www.gnome.org/projects/sabayon
 Source0: http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
-Patch0: sabayon-2.12.3-pam.patch
+Patch0: sabayon-2.29.91-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
 Patch1:  sabayon-2.22.1-source.patch
 # gw: fix for running with libexecdir == libdir:
