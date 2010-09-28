@@ -2,7 +2,7 @@
 %define gnome_python2_version 2.6.0
 
 Name:    sabayon
-Version: 2.30.0
+Version: 2.30.1
 Release: %mkrel 1
 Summary: Tool to maintain user profiles in a GNOME desktop
 
