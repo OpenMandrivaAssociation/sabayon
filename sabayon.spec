@@ -3,7 +3,7 @@
 
 Name:    sabayon
 Version: 2.30.1
-Release: %mkrel 3
+Release: %mkrel 4
 Summary: Tool to maintain user profiles in a GNOME desktop
 
 Group:   System/Configuration/Other
