@@ -82,9 +82,9 @@ This package contains the python modules of sabayon.
 %make
 
 %install
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
-%makeinstall PAM_PREFIX=$RPM_BUILD_ROOT%{_sysconfdir}
+%makeinstall PAM_PREFIX=%{buildroot}%{_sysconfdir}
 
 %find_lang sabayon --with-gnome
 for omf in %buildroot%_datadir/omf/*/*-??*.omf;do 
@@ -100,7 +100,7 @@ rm -f %buildroot%py_platsitedir/%{name}/xlib.*a \
 mkdir -p %buildroot/etc/sabayon/profiles/
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %pre admin
 %_pre_useradd %name-admin /var/lib/ /sbin/nologin
