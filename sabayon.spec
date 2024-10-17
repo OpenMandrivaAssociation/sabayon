@@ -8,7 +8,7 @@ Summary:	Tool to maintain user profiles in a GNOME desktop
 
 Group:		System/Configuration/Other
 License:	GPLv2+
-URL:		http://www.gnome.org/projects/sabayon
+URL:		https://www.gnome.org/projects/sabayon
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/sabayon/sabayon-%{version}.tar.bz2
 Patch0:		sabayon-2.29.91-pam.patch
 # (fc) 2.12.1-3mdk source xinit file
